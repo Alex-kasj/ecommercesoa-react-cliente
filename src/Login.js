@@ -7,6 +7,7 @@ import Reclamaciones from './Reclamaciones';
 
 const loginUrl = "http://127.0.0.1:8000/api/login";
 const registerUrl = "http://127.0.0.1:8000/api/register";
+const clientUrl = "http://127.0.0.1:8000/api/clientes";
 
 class Login extends Component {
   state = {
@@ -20,6 +21,7 @@ class Login extends Component {
     },
     modalRegister: false,
     loggedIn: false,
+    userId: null,
     errorMessage: ''
   }
 
@@ -38,13 +40,38 @@ class Login extends Component {
     const { email, password } = this.state.form;
     try {
       const response = await axios.post(loginUrl, { email, password });
-      localStorage.setItem('token', response.data.token);
+  
+      // Imprime la respuesta completa de la API
+      console.log('API Response:', response.data);
+  
+      // Asegúrate de que la respuesta contiene el token y el userId
+      const { token, userId } = response.data;
+  
+      // Verifica que token y userId no sean undefined
+      console.log('Token:', token);
+      console.log('UserId:', userId);
+  
+      // Guarda token y userId en localStorage si están definidos
+      if (token) {
+        localStorage.setItem('token', token);
+      } else {
+        console.error('Token is undefined');
+      }
+  
+      if (userId) {
+        localStorage.setItem('userId', userId);
+      } else {
+        console.error('UserId is undefined');
+      }
+  
       this.setState({ loggedIn: true, errorMessage: '' });
     } catch (error) {
-      console.log(error.message);
+      console.error('Login Error:', error.message);
       this.setState({ errorMessage: 'Invalid credentials. Please try again.' });
     }
   }
+  
+  
 
   handleRegister = async e => {
     e.preventDefault();
@@ -148,6 +175,7 @@ class Login extends Component {
 }
 
 export default Login;
+
 
 
 

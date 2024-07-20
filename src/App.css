@@ -123,7 +123,11 @@ body {
   margin: 0 auto; /* Centrar horizontalmente */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital@0;1&family=Kumbh+Sans:wght@400;700&family=Open+Sans&family=PT+Sans:wght@400;700&display=swap');
 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 
 @keyframes App-logo-spin {
   from {

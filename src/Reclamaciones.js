@@ -3,10 +3,11 @@ import './App.css';
 import './index.css';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import './css/styles.css';
+import images from './imageLoader';
+import imagenLink from './img/MB (670 × 590 px) (1).ico';
+import imagenIcon from './img/MB (670 × 590 px) (670 × 300 px).png';
 
 const url = "http://127.0.0.1:8000/api/reclamos";
 
@@ -116,127 +117,402 @@ class Reclamaciones extends Component {
     }
 
     return (
-      <div className="App">
+      <div className="App full-screen">
+        <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+          <title>Catalogo de Productos</title>
+          <link rel="icon" href={imagenLink} />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital@0;1&family=Kumbh+Sans:wght@400;700&family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+        </head>
 
-        <div className='main-content'>
-          <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-              <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"/></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                      </ul>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                  </ul>
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                      <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-                </div>
-              </div>
-            </nav>
-          </header>
-          <body>
-            <div id="carouselExampleIndicators" class="carousel slide">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="src/img/imagen 1.jpg" class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                  <img src="src/img/imagen 2.jpg" class="d-block w-100" alt="..." />
-                </div>
-                <div class="carousel-item">
-                  <img src="src/img/imagen 3.jpg" class="d-block w-100" alt="..." />
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+        <div style={{ background: 'linear-gradient(#383220,#6b5422)' }}>
+          <nav class="navbar navbar-expand-lg bg-black" style={{ backgroundColor: '#383220' }}>
+            <div class="container-fluid text-center">
+              <a class="navbar-brand text-white" href="index.html"><img src={imagenIcon} alt=""
+                width="120" /></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary active" aria-current="page" href="g-shock.html">G-Shock</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary active" aria-current="page" href="g-shockMujer.html">G-Shock Mujer</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary active" aria-current="page" href="edifice.html">Edifice</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary active" aria-current="page" href="regulares.html">Regulares Casio</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </body>
-          <footer>
-            <br />
-            <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>Agregar Reclamación</button>
-            <br /><br />
+          </nav>
+          <header id="header" class="vh-100 carousel slide" data-bs-ride="carousel" style={{ paddingTop: '104px' }}>
+            <div class="container h-75 d-flex align-items-center carousel-inner">
+              <div class="text-center carousel-item active">
+                <h2 class="text-capitalize text-white">Encuentra el reloj</h2>
+                <h1 class="text-uppercase py-2 fw-bold text-white">que se acomode a tu estilo</h1>
+                <a href="ofertas.html" style={{ backgroundColor: '#383220' }} class="btn text-light mt-3 text-uppercase">Haz click
+                  aquí</a>
+              </div>
+              <div class="text-center carousel-item">
+                <h2 class="text-capitalize text-white">Revisa Todas las</h2>
+                <h1 class="text-uppercase py-2 fw-bold text-white">Ofertas que tenemos para ti</h1>
+                <a href="ofertas.html" style={{ backgroundColor: '#383220' }} class="btn text-light mt-3 text-uppercase">Haz click
+                  aquí</a>
+              </div>
+            </div>
 
-            <Modal isOpen={this.state.modalInsertar}>
-              <ModalHeader style={{ display: 'block' }}>
-                <span style={{ float: 'right' }} onClick={() => this.modalInsertar()}> X </span>
-              </ModalHeader>
-              <ModalBody>
-                <div className='form-group'>
-                  <label htmlFor='id'>ID</label>
-                  <input className='form-control' type="text" name="id" id="id" onChange={this.handleChange} value={form ? form.id : this.state.data.length + 2} readOnly />
-                  <br />
-                  <label htmlFor='id_cliente'>ID Cliente</label>
-                  <input className='form-control' type="text" name="id_cliente" id="id_cliente" onChange={this.handleChange} value={form ? form.id_cliente : ''} />
-                  <br />
-                  <label htmlFor='DNI'>DNI</label>
-                  <input className='form-control' type="text" name="DNI" id="DNI" onChange={this.handleChange} value={form ? form.DNI : ''} />
-                  <br />
-                  <label htmlFor='fecha'>Fecha</label>
-                  <input className='form-control' type="text" name="fecha" id="fecha" onChange={this.handleChange} value={form ? form.fecha : ''} />
-                  <br />
-                  <label htmlFor='detalle_reclamo'>Detalle Reclamo</label>
-                  <textarea className='form-control' name="detalle_reclamo" id="detalle_reclamo" onChange={this.handleChange} value={form ? form.detalle_reclamo : ''}></textarea>
+            <button class="carousel-control-prev" type="button" data-bs-target="#header" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#header" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </header>
+          <div id="riboon" class="container-fluid">
+            <div id="cube" class="container w-50 px-5 rounded-lg">
+              <div class="row align-items-center">
+                <div class="col-sm p-3">
+                  <div class="text-center text-light" style={{ marginTop: '7rem' }}>
+                    <h1 style={{ marginTop: '-4rem' }}>Ofertas Navidad 2022</h1>
+                  </div>
                 </div>
-              </ModalBody>
-              <ModalFooter>
-                {this.state.tipoModal === 'insertar' ?
-                  <button className='btn btn-success' onClick={() => this.peticionPost()}>
-                    INSERTAR
-                  </button> : <button className='btn btn-primary' onClick={() => this.peticionPut()}>
-                    ACTUALIZAR
-                  </button>
-                }
-                <button className='btn btn-danger' onClick={() => this.modalInsertar()}>
-                  CANCELAR
-                </button>
-              </ModalFooter>
-            </Modal>
+              </div>
+              <hr />
+            </div>
+          </div>
 
-            <Modal isOpen={this.state.modalEliminar}>
-              <ModalBody>
-                ¿Estas Seguro de que quieres eliminar la reclamación {form && form.id}?
-              </ModalBody>
-              <ModalFooter>
-                <button className='btn btn-danger' onClick={() => this.peticionDelete()}>SI</button>
-                <button className='btn btn-secondary' onClick={() => this.setState({ modalEliminar: false })}>NO</button>
-              </ModalFooter>
-            </Modal>
+          <main style={{ marginTop: '30px' }}>
+            <div class="container accordion text-light text-center">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                <div class="col">
+                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
+                    <img src={images['3.png']} />
+                    <div class="card-body">
+                      <del class="text-secondary">S/.399.00</del>
+                      <p class="card-text">S/.199.00</p>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            DW-9052-1V
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                          <div class="accordion-body text-dark">
+                            <strong>Caracteristicas</strong> <br />
+                            • Resistente a los impactos <br />
+                            • Resistente al agua hasta una profundidad de 200 metros <br />
+                            • Hora mundial <br />
+                            • Cronómetro <br />
+                            • Temporizador <br />
+                            • Iluminación: LED <br />
+                            • Calendario <br />
+                            • Y mas <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
+                    <img src={images['44.png']} />
+                    <div class="card-body">
+                      <del class="text-secondary">S/.799.00</del>
+                      <p class="card-text">S/.499.00</p>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            GA-2100-1A1
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                          <div class="accordion-body text-dark">
+                            <strong>Caracteristicas</strong> <br />
+                            • Resistente a los impactos <br />
+                            • Resistente al agua hasta una profundidad de 200 metros <br />
+                            • Hora mundial <br />
+                            • Cronómetro <br />
+                            • Temporizador <br />
+                            • Iluminación: LED <br />
+                            • Calendario <br />
+                            • Y mas <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
+                    <img src={images['67.png']} />
+                    <div class="card-body">
+                      <del class="text-secondary">S/.599.00</del>
+                      <p class="card-text">S/.399.00</p>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                            GA-700CM-3A
+                          </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                          <div class="accordion-body text-dark">
+                            <strong>Caracteristicas</strong> <br />
+                            • Resistente a los impactos <br />
+                            • Resistente al agua hasta una profundidad de 200 metros <br />
+                            • Hora mundial <br />
+                            • Cronómetro <br />
+                            • Temporizador <br />
+                            • Iluminación: LED <br />
+                            • Calendario <br />
+                            • Y mas <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
+                    <img src={images['83.png']} />
+                    <div class="card-body">
+                      <del class="text-secondary">S/.949.00</del>
+                      <p class="card-text">S/.599.00</p>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSix">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                            GBX-100-7
+                          </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix">
+                          <div class="accordion-body text-dark">
+                            <strong>Caracteristicas</strong> <br />
+                            •	Resistente a los impactos <br />
+                            •	Resistente al agua hasta una profundidad de 200 metros <br />
+                            •	Hora mundial <br />
+                            •	Cronómetro <br />
+                            •	Temporizador <br />
+                            •	Iluminación: LED <br />
+                            •	Calendario <br />
+                            •	Y mas <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
+                    <img src={images['86.png']} />
+                    <div class="card-body">
+                      <del class="text-secondary">S/.499.00</del>
+                      <p class="card-text">S/.399.00</p>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                            GD-400GB-1B2
+                          </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
+                          <div class="accordion-body text-dark">
+                            <strong>Caracteristicas</strong> <br />
+                            •	Resistente a los impactos <br />
+                            •	Resistente al agua hasta una profundidad de 200 metros <br />
+                            •	Hora mundial <br />
+                            •	Cronómetro <br />
+                            •	Temporizador <br />
+                            •	Iluminación: LED <br />
+                            •	Calendario <br />
+                            •	Y mas <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
+                    <img src={images['90.png']} />
+                    <div class="card-body">
+                      <del class="text-secondary">S/.1.299.00</del>
+                      <p class="card-text">S/.699.00</p>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading7">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                            GM-110-1A
+                          </button>
+                        </h2>
+                        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7">
+                          <div class="accordion-body text-dark">
+                            <strong>Caracteristicas</strong> <br />
+                            •	Resistente a los impactos <br />
+                            •	Resistencia magnética <br />
+                            •	Resistente al agua hasta una profundidad de 200 metros <br />
+                            •	Hora mundial <br />
+                            •	Cronómetro <br />
+                            •	Temporizador <br />
+                            •	Iluminación: LED <br />
+                            •	Calendario <br />
+                            •	Y mas <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+          <footer style={{ marginTop: '5rem', backgroundColor: '#383220' }} className="py-5">
+            <div className="container">
+              <div className="row text-white g-4">
+                <div className="col-md-4 col-lg-">
+                  <h5 className="fw-light mb-3">Contactanos</h5>
+                  <div className="d-flex justify-content-start align-items-start my-2 text-muted">
+                    <span className="me-3">
+                      <i className="fas fa-envelope"></i>
+                    </span>
+                    <span className="fw-light">
+                      mbwatchperu@gmail.com
+                    </span>
+                  </div>
+                  <div className="d-flex justify-content-start align-items-start my-2 text-muted">
+                    <span className="me-3">
+                      <i className="fas fa-phone-alt"></i>
+                    </span>
+                    <span className="fw-light">
+                      961325570
+                    </span>
+                  </div>
+                </div>
+                <div className="col-md-4 col-lg-4">
+                  <h5 className="fw-light mb-3">Siguenos</h5>
+                  <div>
+                    <ul className="list-unstyled d-flex">
+                      <li>
+                        <a href="https://www.facebook.com/MBwatchperu"
+                          className="text-white text-decoration-none text-muted fs-4 me-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            className="bi bi-facebook" viewBox="0 0 16 16">
+                            <path
+                              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/mbwatchperu/"
+                          className="text-white text-decoration-none text-muted fs-4 me-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            className="bi bi-instagram" viewBox="0 0 16 16">
+                            <path
+                              d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://wa.link/4kpxbf" className="text-white text-decoration-none text-muted fs-4 me-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            className="bi bi-whatsapp" viewBox="0 0 16 16">
+                            <path
+                              d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="col-md-4 col-lg-4">
+                  <h5 className="fw-light mb-3">Reclamaciones: </h5>
+                  <div>
+                    <ul className="list-unstyled d-flex">
+                      <li>
+                        <a className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>
+                          Reclamos
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </footer>
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
         </div>
+
+        <Modal isOpen={this.state.modalInsertar}>
+          <ModalHeader style={{ display: 'block' }}>
+            <span style={{ float: 'right' }} onClick={() => this.modalInsertar()}> X </span>
+          </ModalHeader>
+          <ModalBody>
+            <div className='form-group'>
+              <label htmlFor='id'>ID</label>
+              <input className='form-control' type="text" name="id" id="id" onChange={this.handleChange} value={form ? form.id : this.state.data.length + 2} readOnly />
+              <br />
+              <label htmlFor='id_cliente'>ID Cliente</label>
+              <input className='form-control' type="text" name="id_cliente" id="id_cliente" onChange={this.handleChange} value={form ? form.id_cliente : ''} />
+              <br />
+              <label htmlFor='DNI'>DNI</label>
+              <input className='form-control' type="text" name="DNI" id="DNI" onChange={this.handleChange} value={form ? form.DNI : ''} />
+              <br />
+              <label htmlFor='fecha'>Fecha</label>
+              <input className='form-control' type="text" name="fecha" id="fecha" onChange={this.handleChange} value={form ? form.fecha : ''} />
+              <br />
+              <label htmlFor='detalle_reclamo'>Detalle Reclamo</label>
+              <textarea className='form-control' name="detalle_reclamo" id="detalle_reclamo" onChange={this.handleChange} value={form ? form.detalle_reclamo : ''}></textarea>
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            {this.state.tipoModal === 'insertar' ?
+              <button className='btn btn-success' onClick={() => this.peticionPost()}>
+                INSERTAR
+              </button> : <button className='btn btn-primary' onClick={() => this.peticionPut()}>
+                ACTUALIZAR
+              </button>
+            }
+            <button className='btn btn-danger' onClick={() => this.modalInsertar()}>
+              CANCELAR
+            </button>
+          </ModalFooter>
+        </Modal>
+
+        <Modal isOpen={this.state.modalEliminar}>
+          <ModalBody>
+            ¿Estas Seguro de que quieres eliminar la reclamación {form && form.id}?
+          </ModalBody>
+          <ModalFooter>
+            <button className='btn btn-danger' onClick={() => this.peticionDelete()}>SI</button>
+            <button className='btn btn-secondary' onClick={() => this.setState({ modalEliminar: false })}>NO</button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }
