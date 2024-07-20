@@ -125,9 +125,7 @@ class Reclamaciones extends Component {
           </ul>
         </div>
         <div className='main-content'>
-          <br />
-          <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>Agregar Reclamación</button>
-          <br /><br />
+          
           <table className='table'>
             <thead>
               <tr>
@@ -148,11 +146,7 @@ class Reclamaciones extends Component {
                     <td>{reclamacion.DNI}</td>
                     <td>{reclamacion.fecha}</td>
                     <td>{reclamacion.detalle_reclamo}</td>
-                    <td>
-                      <button className='btn btn-primary' onClick={() => { this.seleccionarReclamacion(reclamacion); this.modalInsertar() }}><FontAwesomeIcon icon={faEdit} /></button>
-                      {" "}
-                      <button className='btn btn-danger' onClick={() => { this.seleccionarReclamacion(reclamacion); this.setState({ modalEliminar: true }) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
-                    </td>
+                    <td><button className='btn btn-danger' onClick={() => { this.seleccionarReclamacion(reclamacion); this.setState({ modalEliminar: true }) }}><FontAwesomeIcon icon={faTrashAlt} /></button></td>
                   </tr>
                 )
               })}
@@ -173,7 +167,7 @@ class Reclamaciones extends Component {
 
           <Modal isOpen={this.state.modalInsertar}>
             <ModalHeader style={{ display: 'block' }}>
-              <span style={{ float: 'right' }}> X </span>
+              <span style={{ float: 'right' }} onClick={() => this.modalInsertar()}> X </span>
             </ModalHeader>
             <ModalBody>
               <div className='form-group'>

@@ -182,7 +182,7 @@ class App extends Component {
 
                   <Modal isOpen={this.state.modalInsertar}>
                     <ModalHeader style={{ display: 'block' }}>
-                      <span style={{ float: 'right' }}> X </span>
+                      <span style={{ float: 'right' }} onClick={() => this.modalInsertar()}> X </span>
                     </ModalHeader>
                     <ModalBody>
                       <div className='form-group'>
