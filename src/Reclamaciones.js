@@ -117,105 +117,125 @@ class Reclamaciones extends Component {
 
     return (
       <div className="App">
-        <div className="sidebar">
-          <h2>Menú</h2>
-          <ul>
-            <li><Link to="/">INICIO</Link></li>
-            <li><Link to="/reclamaciones">RECLAMACIONES</Link></li>
-          </ul>
-        </div>
+
         <div className='main-content'>
-          <br />
-          <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>Agregar Reclamación</button>
-          <br /><br />
-          <table className='table'>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>ID Cliente</th>
-                <th>DNI</th>
-                <th>Fecha</th>
-                <th>Detalle Reclamo</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentData.map(reclamacion => {
-                return (
-                  <tr key={reclamacion.id}>
-                    <td>{reclamacion.id}</td>
-                    <td>{reclamacion.id_cliente}</td>
-                    <td>{reclamacion.DNI}</td>
-                    <td>{reclamacion.fecha}</td>
-                    <td>{reclamacion.detalle_reclamo}</td>
-                    <td>
-                      <button className='btn btn-primary' onClick={() => { this.seleccionarReclamacion(reclamacion); this.modalInsertar() }}><FontAwesomeIcon icon={faEdit} /></button>
-                      {" "}
-                      <button className='btn btn-danger' onClick={() => { this.seleccionarReclamacion(reclamacion); this.setState({ modalEliminar: true }) }}><FontAwesomeIcon icon={faTrashAlt} /></button>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-
-          <nav>
-            <ul className='pagination'>
-              {pageNumbers.map(number => (
-                <li key={number} className='page-item'>
-                  <a onClick={(e) => this.handlePageChange(e, number)} href='!#' className='page-link'>
-                    {number}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <Modal isOpen={this.state.modalInsertar}>
-            <ModalHeader style={{ display: 'block' }}>
-              <span style={{ float: 'right' }}> X </span>
-            </ModalHeader>
-            <ModalBody>
-              <div className='form-group'>
-                <label htmlFor='id'>ID</label>
-                <input className='form-control' type="text" name="id" id="id" onChange={this.handleChange} value={form ? form.id : this.state.data.length + 2} readOnly />
-                <br />
-                <label htmlFor='id_cliente'>ID Cliente</label>
-                <input className='form-control' type="text" name="id_cliente" id="id_cliente" onChange={this.handleChange} value={form ? form.id_cliente : ''} />
-                <br />
-                <label htmlFor='DNI'>DNI</label>
-                <input className='form-control' type="text" name="DNI" id="DNI" onChange={this.handleChange} value={form ? form.DNI : ''} />
-                <br />
-                <label htmlFor='fecha'>Fecha</label>
-                <input className='form-control' type="text" name="fecha" id="fecha" onChange={this.handleChange} value={form ? form.fecha : ''} />
-                <br />
-                <label htmlFor='detalle_reclamo'>Detalle Reclamo</label>
-                <textarea className='form-control' name="detalle_reclamo" id="detalle_reclamo" onChange={this.handleChange} value={form ? form.detalle_reclamo : ''}></textarea>
-              </div>
-            </ModalBody>
-            <ModalFooter>
-              {this.state.tipoModal === 'insertar' ?
-                <button className='btn btn-success' onClick={() => this.peticionPost()}>
-                  INSERTAR
-                </button> : <button className='btn btn-primary' onClick={() => this.peticionPut()}>
-                  ACTUALIZAR
+          <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
-              }
-              <button className='btn btn-danger' onClick={() => this.modalInsertar()}>
-                CANCELAR
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"/></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                  </ul>
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+            </nav>
+          </header>
+          <body>
+            <div id="carouselExampleIndicators" class="carousel slide">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="src/img/imagen 1.jpg" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                  <img src="src/img/imagen 2.jpg" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                  <img src="src/img/imagen 3.jpg" class="d-block w-100" alt="..." />
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
               </button>
-            </ModalFooter>
-          </Modal>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </body>
+          <footer>
+            <br />
+            <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>Agregar Reclamación</button>
+            <br /><br />
 
-          <Modal isOpen={this.state.modalEliminar}>
-            <ModalBody>
-              ¿Estas Seguro de que quieres eliminar la reclamación {form && form.id}?
-            </ModalBody>
-            <ModalFooter>
-              <button className='btn btn-danger' onClick={() => this.peticionDelete()}>SI</button>
-              <button className='btn btn-secondary' onClick={() => this.setState({ modalEliminar: false })}>NO</button>
-            </ModalFooter>
-          </Modal>
+            <Modal isOpen={this.state.modalInsertar}>
+              <ModalHeader style={{ display: 'block' }}>
+                <span style={{ float: 'right' }} onClick={() => this.modalInsertar()}> X </span>
+              </ModalHeader>
+              <ModalBody>
+                <div className='form-group'>
+                  <label htmlFor='id'>ID</label>
+                  <input className='form-control' type="text" name="id" id="id" onChange={this.handleChange} value={form ? form.id : this.state.data.length + 2} readOnly />
+                  <br />
+                  <label htmlFor='id_cliente'>ID Cliente</label>
+                  <input className='form-control' type="text" name="id_cliente" id="id_cliente" onChange={this.handleChange} value={form ? form.id_cliente : ''} />
+                  <br />
+                  <label htmlFor='DNI'>DNI</label>
+                  <input className='form-control' type="text" name="DNI" id="DNI" onChange={this.handleChange} value={form ? form.DNI : ''} />
+                  <br />
+                  <label htmlFor='fecha'>Fecha</label>
+                  <input className='form-control' type="text" name="fecha" id="fecha" onChange={this.handleChange} value={form ? form.fecha : ''} />
+                  <br />
+                  <label htmlFor='detalle_reclamo'>Detalle Reclamo</label>
+                  <textarea className='form-control' name="detalle_reclamo" id="detalle_reclamo" onChange={this.handleChange} value={form ? form.detalle_reclamo : ''}></textarea>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                {this.state.tipoModal === 'insertar' ?
+                  <button className='btn btn-success' onClick={() => this.peticionPost()}>
+                    INSERTAR
+                  </button> : <button className='btn btn-primary' onClick={() => this.peticionPut()}>
+                    ACTUALIZAR
+                  </button>
+                }
+                <button className='btn btn-danger' onClick={() => this.modalInsertar()}>
+                  CANCELAR
+                </button>
+              </ModalFooter>
+            </Modal>
+
+            <Modal isOpen={this.state.modalEliminar}>
+              <ModalBody>
+                ¿Estas Seguro de que quieres eliminar la reclamación {form && form.id}?
+              </ModalBody>
+              <ModalFooter>
+                <button className='btn btn-danger' onClick={() => this.peticionDelete()}>SI</button>
+                <button className='btn btn-secondary' onClick={() => this.setState({ modalEliminar: false })}>NO</button>
+              </ModalFooter>
+            </Modal>
+          </footer>
         </div>
       </div>
     );

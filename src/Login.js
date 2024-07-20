@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import App from './App';
+import Reclamaciones from './Reclamaciones';
 
 const loginUrl = "http://127.0.0.1:8000/api/login";
 const registerUrl = "http://127.0.0.1:8000/api/register";
@@ -71,7 +71,7 @@ class Login extends Component {
     const { form, loggedIn, modalRegister, errorMessage } = this.state;
 
     if (loggedIn) {
-      return <App />;
+      return <Reclamaciones />;
     }
 
     return (
