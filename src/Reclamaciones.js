@@ -10,11 +10,13 @@ import imagenLink from './img/MB (670 × 590 px) (1).ico';
 import imagenIcon from './img/MB (670 × 590 px) (670 × 300 px).png';
 
 const url = "http://127.0.0.1:8000/api/reclamos";
+const productosUrl = "http://127.0.0.1:8000/api/productos"; // URL para traer productos del backend
 
 class Reclamaciones extends Component {
 
   state = {
     data: [],
+    productos: [], // Estado para los productos
     modalInsertar: false,
     modalEliminar: false,
     form: {
@@ -32,6 +34,14 @@ class Reclamaciones extends Component {
   peticionGet = () => {
     axios.get(url).then(response => {
       this.setState({ data: response.data });
+    }).catch(error => {
+      console.log(error.message);
+    })
+  }
+
+  peticionGetProductos = () => {
+    axios.get(productosUrl).then(response => {
+      this.setState({ productos: response.data });
     }).catch(error => {
       console.log(error.message);
     })
@@ -95,6 +105,7 @@ class Reclamaciones extends Component {
 
   componentDidMount() {
     this.peticionGet();
+    this.peticionGetProductos(); // Trae productos al cargar el componente
   }
 
   handlePageChange = (event, pageNumber) => {
@@ -103,12 +114,13 @@ class Reclamaciones extends Component {
   }
 
   render() {
-    const { form, data, currentPage, itemsPerPage } = this.state;
+    const { form, data, productos, currentPage, itemsPerPage } = this.state;
 
     // Filtra los datos para la página actual
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+    const currentProductos = productos.slice(indexOfFirstItem, indexOfLastItem);
 
     // Calcular el número total de páginas
     const pageNumbers = [];
@@ -143,22 +155,7 @@ class Reclamaciones extends Component {
                   <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <a class="nav-link text-secondary active" aria-current="page" href="g-shock.html">G-Shock</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-secondary active" aria-current="page" href="g-shockMujer.html">G-Shock Mujer</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-secondary active" aria-current="page" href="edifice.html">Edifice</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link text-secondary active" aria-current="page" href="regulares.html">Regulares Casio</a>
-                  </li>
-                </ul>
-              </div>
+
             </div>
           </nav>
           <header id="header" class="vh-100 carousel slide" data-bs-ride="carousel" style={{ paddingTop: '104px' }}>
@@ -200,190 +197,39 @@ class Reclamaciones extends Component {
           <main style={{ marginTop: '30px' }}>
             <div class="container accordion text-light text-center">
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                <div class="col">
-                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
-                    <img src={images['3.png']} />
-                    <div class="card-body">
-                      <del class="text-secondary">S/.399.00</del>
-                      <p class="card-text">S/.199.00</p>
-
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                            DW-9052-1V
-                          </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-                          <div class="accordion-body text-dark">
-                            <strong>Caracteristicas</strong> <br />
-                            • Resistente a los impactos <br />
-                            • Resistente al agua hasta una profundidad de 200 metros <br />
-                            • Hora mundial <br />
-                            • Cronómetro <br />
-                            • Temporizador <br />
-                            • Iluminación: LED <br />
-                            • Calendario <br />
-                            • Y mas <br />
-                          </div>
+                {currentProductos.map((producto, index) => (
+                  <div class="col">
+                    <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
+                      <img src={images['90.png']} />
+                      <div class="card-body">
+                        <p class="card-text">{producto.nombre}</p>
+                        
+                        <p class="card-text">S/.{producto.precio}</p>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                              {producto.descripcion}
+                            </button>
+                          </h2>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col">
-                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
-                    <img src={images['44.png']} />
-                    <div class="card-body">
-                      <del class="text-secondary">S/.799.00</del>
-                      <p class="card-text">S/.499.00</p>
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                            GA-2100-1A1
-                          </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
-                          <div class="accordion-body text-dark">
-                            <strong>Caracteristicas</strong> <br />
-                            • Resistente a los impactos <br />
-                            • Resistente al agua hasta una profundidad de 200 metros <br />
-                            • Hora mundial <br />
-                            • Cronómetro <br />
-                            • Temporizador <br />
-                            • Iluminación: LED <br />
-                            • Calendario <br />
-                            • Y mas <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
-                    <img src={images['67.png']} />
-                    <div class="card-body">
-                      <del class="text-secondary">S/.599.00</del>
-                      <p class="card-text">S/.399.00</p>
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                            GA-700CM-3A
-                          </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
-                          <div class="accordion-body text-dark">
-                            <strong>Caracteristicas</strong> <br />
-                            • Resistente a los impactos <br />
-                            • Resistente al agua hasta una profundidad de 200 metros <br />
-                            • Hora mundial <br />
-                            • Cronómetro <br />
-                            • Temporizador <br />
-                            • Iluminación: LED <br />
-                            • Calendario <br />
-                            • Y mas <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
-                    <img src={images['83.png']} />
-                    <div class="card-body">
-                      <del class="text-secondary">S/.949.00</del>
-                      <p class="card-text">S/.599.00</p>
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSix">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                            GBX-100-7
-                          </button>
-                        </h2>
-                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix">
-                          <div class="accordion-body text-dark">
-                            <strong>Caracteristicas</strong> <br />
-                            •	Resistente a los impactos <br />
-                            •	Resistente al agua hasta una profundidad de 200 metros <br />
-                            •	Hora mundial <br />
-                            •	Cronómetro <br />
-                            •	Temporizador <br />
-                            •	Iluminación: LED <br />
-                            •	Calendario <br />
-                            •	Y mas <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
-                    <img src={images['86.png']} />
-                    <div class="card-body">
-                      <del class="text-secondary">S/.499.00</del>
-                      <p class="card-text">S/.399.00</p>
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFive">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                            GD-400GB-1B2
-                          </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
-                          <div class="accordion-body text-dark">
-                            <strong>Caracteristicas</strong> <br />
-                            •	Resistente a los impactos <br />
-                            •	Resistente al agua hasta una profundidad de 200 metros <br />
-                            •	Hora mundial <br />
-                            •	Cronómetro <br />
-                            •	Temporizador <br />
-                            •	Iluminación: LED <br />
-                            •	Calendario <br />
-                            •	Y mas <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
-                    <img src={images['90.png']} />
-                    <div class="card-body">
-                      <del class="text-secondary">S/.1.299.00</del>
-                      <p class="card-text">S/.699.00</p>
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading7">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse7" aria-expanded="true" aria-controls="collapse7">
-                            GM-110-1A
-                          </button>
-                        </h2>
-                        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7">
-                          <div class="accordion-body text-dark">
-                            <strong>Caracteristicas</strong> <br />
-                            •	Resistente a los impactos <br />
-                            •	Resistencia magnética <br />
-                            •	Resistente al agua hasta una profundidad de 200 metros <br />
-                            •	Hora mundial <br />
-                            •	Cronómetro <br />
-                            •	Temporizador <br />
-                            •	Iluminación: LED <br />
-                            •	Calendario <br />
-                            •	Y mas <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
+                
               </div>
+              <div className="d-flex justify-content-center mt-4">
+                  <ul className="pagination">
+                    {pageNumbers.map(number => (
+                      <li key={number} className="page-item">
+                        <a onClick={(e) => this.handlePageChange(e, number)} href="!#" className="page-link">
+                          {number}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
             </div>
           </main>
           <footer style={{ marginTop: '5rem', backgroundColor: '#383220' }} className="py-5">
@@ -449,7 +295,7 @@ class Reclamaciones extends Component {
                   <div>
                     <ul className="list-unstyled d-flex">
                       <li>
-                        <a className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>
+                        <a className='btn btn-successbtn btn-outline-gray' onClick={() => { this.setState({ form: null, tipoModal: 'insertar' }); this.modalInsertar() }}>
                           Reclamos
                         </a>
                       </li>
@@ -458,7 +304,7 @@ class Reclamaciones extends Component {
                 </div>
               </div>
             </div>
-            
+
           </footer>
           <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
             integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
