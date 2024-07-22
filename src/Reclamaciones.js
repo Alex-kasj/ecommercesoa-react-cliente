@@ -21,7 +21,7 @@ class Reclamaciones extends Component {
     modalEliminar: false,
     form: {
       id: '',
-      id_cliente: '2',
+      id_cliente: '1',
       DNI: '',
       fecha: '',
       detalle_reclamo: '',
@@ -324,7 +324,7 @@ class Reclamaciones extends Component {
               <input className='form-control' type="text" name="id" id="id" onChange={this.handleChange} value={form ? form.id : this.state.data.length + 2} readOnly />
               <br />
               <label htmlFor='id_cliente'>ID Cliente</label>
-              <input className='form-control' type="text" name="id_cliente" id="id_cliente" onChange={this.handleChange} value={form ? form.id_cliente : '2' } readOnly/>
+              <input className='form-control' type="text" name="id_cliente" id="id_cliente" onChange={this.handleChange} value={form ? form.id_cliente : '1' } readOnly/>
               <br />
               <label htmlFor='DNI'>DNI</label>
               <input className='form-control' type="text" name="DNI" id="DNI" onChange={this.handleChange} value={form ? form.DNI : ''} />
