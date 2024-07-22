@@ -9,8 +9,8 @@ import images from './imageLoader';
 import imagenLink from './img/MB (670 × 590 px) (1).ico';
 import imagenIcon from './img/MB (670 × 590 px) (670 × 300 px).png';
 
-const url = "http://127.0.0.1:8000/api/reclamos";
-const productosUrl = "http://127.0.0.1:8000/api/productos"; // URL para traer productos del backend
+const url = "https://gregarious-victory-production.up.railway.app/api/reclamos";
+const productosUrl = "https://gregarious-victory-production.up.railway.app/api/productos"; // URL para traer productos del backend
 
 class Reclamaciones extends Component {
 

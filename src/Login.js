@@ -5,9 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Reclamaciones from './Reclamaciones';
 
-const loginUrl = "http://127.0.0.1:8000/api/login";
-const registerUrl = "http://127.0.0.1:8000/api/register";
-const clientUrl = "http://127.0.0.1:8000/api/clientes";
+const loginUrl = "https://gregarious-victory-production.up.railway.app/api/login";
+const registerUrl = "https://gregarious-victory-production.up.railway.app/api/register";
+const clientUrl = "https://gregarious-victory-production.up.railway.app/api/clientes";
 
 class Login extends Component {
   state = {
