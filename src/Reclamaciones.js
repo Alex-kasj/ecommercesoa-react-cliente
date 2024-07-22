@@ -200,7 +200,7 @@ class Reclamaciones extends Component {
                 {currentProductos.map((producto, index) => (
                   <div class="col">
                     <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
-                      <img src={images['90.png']} />
+                      <img src={images[producto.image_path]} />
                       <div class="card-body">
                         <p class="card-text">{producto.nombre}</p>
                         
