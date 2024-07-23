@@ -163,13 +163,13 @@ class Reclamaciones extends Component {
               <div class="text-center carousel-item active">
                 <h2 class="text-capitalize text-white">Encuentra el reloj</h2>
                 <h1 class="text-uppercase py-2 fw-bold text-white">que se acomode a tu estilo</h1>
-                <a href="ofertas.html" style={{ backgroundColor: '#383220' }} class="btn text-light mt-3 text-uppercase">Haz click
+                <a href="#" style={{ backgroundColor: '#383220' }} class="btn text-light mt-3 text-uppercase">Haz click
                   aquí</a>
               </div>
               <div class="text-center carousel-item">
                 <h2 class="text-capitalize text-white">Revisa Todas las</h2>
                 <h1 class="text-uppercase py-2 fw-bold text-white">Ofertas que tenemos para ti</h1>
-                <a href="ofertas.html" style={{ backgroundColor: '#383220' }} class="btn text-light mt-3 text-uppercase">Haz click
+                <a href="#" style={{ backgroundColor: '#383220' }} class="btn text-light mt-3 text-uppercase">Haz click
                   aquí</a>
               </div>
             </div>
@@ -186,7 +186,7 @@ class Reclamaciones extends Component {
               <div class="row align-items-center">
                 <div class="col-sm p-3">
                   <div class="text-center text-light" style={{ marginTop: '7rem' }}>
-                    <h1 style={{ marginTop: '-4rem' }}>Ofertas Navidad 2022</h1>
+                    <h1 style={{ marginTop: '-4rem' }}>Ofertas Navidad 2024</h1>
                   </div>
                 </div>
               </div>
@@ -202,9 +202,9 @@ class Reclamaciones extends Component {
                     <div class="card shadow-sm" style={{ backgroundColor: '#383220' }}>
                       <img src={images[producto.image_path]} />
                       <div class="card-body">
-                        <p class="card-text">{producto.nombre}</p>
+                        <p class="card-text text-white">{producto.nombre}</p>
                         
-                        <p class="card-text">S/.{producto.precio}</p>
+                        <p class="card-text text-white">S/.{producto.precio}</p>
                         <div class="accordion-item">
                           <h2 class="accordion-header" id="heading7">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
